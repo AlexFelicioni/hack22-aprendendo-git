@@ -44,7 +44,7 @@ public class CardsController {
         return new ResponseEntity(deletedCard, HttpStatus.OK);
     }
 
-    @GetMapping("/card/id}")
+    @GetMapping("/card/{id}")
     public ResponseEntity<Card> findById(@PathVariable Long id) {
         Optional<Card> fetchedCustomer = cardService.findById(id);
 
