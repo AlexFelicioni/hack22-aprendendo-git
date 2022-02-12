@@ -29,7 +29,7 @@ public class Card implements Serializable {
         this.id = id;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

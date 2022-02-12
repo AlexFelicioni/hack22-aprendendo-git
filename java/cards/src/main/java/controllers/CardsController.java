@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import services.CardsService;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/cards")
 public class CardsController {
@@ -29,18 +31,25 @@ public class CardsController {
 
     }
 
-    @PutMapping
+    @PutMapping("/card/{id}")
     public ResponseEntity<Card> put(@RequestBody Card card){
         Card putedCard = cardService.putCard(card);
 
         return new ResponseEntity(putedCard, HttpStatus.OK);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/card/{id}")
     public ResponseEntity<Card> delete(@RequestBody Card card){
         Card deletedCard = cardService.putCard(card);
 
         return new ResponseEntity(deletedCard, HttpStatus.OK);
+    }
+
+    @GetMapping("/card/{id}")
+    public ResponseEntity<Card> findById(@PathVariable Long id) {
+        Optional<Card> fetchedCard = cardService.findById(id);
+
+        return ResponseEntity.ok(fetchedCard.get());
     }
 
 
