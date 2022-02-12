@@ -25,11 +25,6 @@ public class CardsService {
 
     }
 
-    public Card getCard(Card card){
-
-        return cardsRepository.findAllById(card.getId());
-
-    }
 
     public Card putCard(Card card){
 

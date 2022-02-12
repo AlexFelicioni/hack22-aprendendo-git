@@ -28,10 +28,9 @@ public class CardsController {
     }
 
     @GetMapping
-    @GetMapping
     public ResponseEntity<List<Card>> findAll() {
-        List<Card> customers = cardService.findAll();
-        return ResponseEntity.ok(customers);
+        List<Card> card = cardService.findAll();
+        return ResponseEntity.ok(card);
     }
 
     @PutMapping("/card/{id}")
@@ -48,11 +47,11 @@ public class CardsController {
         return new ResponseEntity(deletedCard, HttpStatus.OK);
     }
 
-    @GetMapping("/card/{id}")
+    @GetMapping("/card/id}")
     public ResponseEntity<Card> findById(@PathVariable Long id) {
-        Optional<Card> fetchedCard = cardService.findById(id);
+        Optional<Card> fetchedCustomer = cardService.findById(id);
 
-        return ResponseEntity.ok(fetchedCard.get());
+        return ResponseEntity.ok(fetchedCustomer.get());
     }
 
 
