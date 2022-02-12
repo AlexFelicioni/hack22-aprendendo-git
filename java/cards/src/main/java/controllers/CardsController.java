@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import repositories.CardsRepository;
 import services.CardsService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -16,6 +19,7 @@ public class CardsController {
 
     @Autowired
     private CardsService cardService;
+
     @PostMapping
     public ResponseEntity<Card> save(@RequestBody Card card){
         Card savedCard = cardService.saveCard(card);
@@ -24,11 +28,10 @@ public class CardsController {
     }
 
     @GetMapping
-    public ResponseEntity<Card> get(@RequestBody Card card){
-        Card gotCard = cardService.getCard(card);
-
-        return new ResponseEntity(gotCard, HttpStatus.OK);
-
+    @GetMapping
+    public ResponseEntity<List<Card>> findAll() {
+        List<Card> customers = cardService.findAll();
+        return ResponseEntity.ok(customers);
     }
 
     @PutMapping("/card/{id}")
